@@ -1,0 +1,5 @@
+<app-divider-with-header>Modal Component</app-divider-with-header>
+<button class="ui button" (click)="onClick()">Show Modal</button>
+<app-modal (close)="onClick()" *ngIf="modalOpen">
+    <p>this is demo to show the modal</p>
+</app-modal>
