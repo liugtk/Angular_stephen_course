@@ -1,0 +1,14 @@
+<p>credit-form works!</p>
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+    <app-text-input [control]="getNameForm('name')" label="Name"></app-text-input>
+    <app-text-input [control]="getNameForm('cardNumber')" label="Card Number"></app-text-input>
+    <app-text-input [control]="getNameForm('expiration')" label="Expiration Date"></app-text-input>
+    <app-text-input [control]="getNameForm('securityCode')" label="security Code"></app-text-input>
+    <button class="button is-primary" [disabled]="cardForm.invalid" type="submit">Submit</button>
+    <button class="button is-warning" type="button" (click)="onResetClick()">Reset</button>
+</form>
+
+<hr>
+<div>Form Content: {{cardForm.value | json}} </div>
+<div>Form is valid: {{cardForm.valid}}</div>
+<div>Errors around Name: {{cardForm.controls.name.errors|json}}</div>
