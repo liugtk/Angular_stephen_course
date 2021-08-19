@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'emailClient';
+  signedin$: BehaviorSubject<boolean>
+  constructor(private authService: AuthService) {
+    this.signedin$ = authService.signedin$
+  }
+
+  ngOnInit() {
+    this.authService.checkAuth().subscribe() // we just need to subscribe, because auth is updated directly by auth service
+  }
+
 }
